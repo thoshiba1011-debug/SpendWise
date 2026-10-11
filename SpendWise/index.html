@@ -1,0 +1,952 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>SpendWise - Smart Expense Tracker</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+
+<body>
+
+
+    <!-- ================= NAVBAR ================= -->
+
+    <header class="navbar">
+
+        <div class="logo">
+            💰 SpendWise
+        </div>
+
+
+        <nav>
+
+    <a href="index.html">
+        Dashboard
+    </a>
+
+    <a href="transactions.html">
+        Transactions
+    </a>
+
+    <a href="analytics.html">
+        Analytics
+    </a>
+
+    <a href="settings.html">
+        Settings
+    </a>
+
+    <a href="ai-assistant.html">
+        🤖 AI Assistant
+    </a>
+
+</nav>
+
+
+        <button id="themeToggle" class="theme-btn">
+            🌙
+        </button>
+
+    </header>
+
+
+
+    <!-- ================= MAIN CONTENT ================= -->
+
+    <main>
+
+
+        <!-- ================= DASHBOARD ================= -->
+
+        <section id="dashboard" class="dashboard-section">
+
+
+            <div class="welcome">
+
+                <div>
+
+                    <h1>
+                        Welcome to SpendWise 👋
+                    </h1>
+
+                    <p>
+                        Track your online and offline expenses
+                        and manage your monthly budget.
+                    </p>
+
+                </div>
+
+
+                <button
+                    id="notificationBtn"
+                    class="primary-btn"
+                >
+                    🔔 Enable Reminder
+                </button>
+
+            </div>
+
+
+
+            <!-- SUMMARY CARDS -->
+
+            <div class="summary-grid">
+
+
+                <!-- Income -->
+
+                <div class="summary-card">
+
+                    <div class="card-icon">
+                        💵
+                    </div>
+
+                    <div>
+
+                        <p>
+                            Monthly Income
+                        </p>
+
+                        <h2 id="incomeAmount">
+                            ₹0
+                        </h2>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- Online Expense -->
+
+                <div class="summary-card">
+
+                    <div class="card-icon">
+                        💳
+                    </div>
+
+                    <div>
+
+                        <p>
+                            Online Expenses
+                        </p>
+
+                        <h2 id="onlineExpense">
+                            ₹0
+                        </h2>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- Offline Expense -->
+
+                <div class="summary-card">
+
+                    <div class="card-icon">
+                        💵
+                    </div>
+
+                    <div>
+
+                        <p>
+                            Offline Expenses
+                        </p>
+
+                        <h2 id="offlineExpense">
+                            ₹0
+                        </h2>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- Total Expense -->
+
+                <div class="summary-card">
+
+                    <div class="card-icon">
+                        📊
+                    </div>
+
+                    <div>
+
+                        <p>
+                            Total Expenses
+                        </p>
+
+                        <h2 id="totalExpense">
+                            ₹0
+                        </h2>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- Balance -->
+
+                <div class="summary-card">
+
+                    <div class="card-icon">
+                        💰
+                    </div>
+
+                    <div>
+
+                        <p>
+                            Available Balance
+                        </p>
+
+                        <h2 id="balanceAmount">
+                            ₹0
+                        </h2>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </section>
+        <!-- ================= SETTINGS ================= -->
+
+<section id="settings" class="content-section">
+
+    <div class="section-title">
+
+        <div>
+            <h2>⚙️ Settings</h2>
+
+            <p>
+                Customize your SpendWise reminders.
+            </p>
+        </div>
+
+    </div>
+
+
+    <div class="settings-container">
+
+        <div class="setting-card">
+
+            <h3>🔔 Daily Expense Reminder</h3>
+
+            <p>
+                Get a reminder to enter your offline expenses.
+            </p>
+
+
+            <div class="setting-row">
+
+                <label for="reminderEnabled">
+                    Enable Reminder
+                </label>
+
+                <input
+                    type="checkbox"
+                    id="reminderEnabled"
+                >
+
+            </div>
+
+
+            <div class="setting-row">
+
+                <label for="reminderTime">
+                    Reminder Time
+                </label>
+
+                <input
+                    type="time"
+                    id="reminderTime"
+                    value="20:00"
+                >
+
+            </div>
+
+
+            <div class="setting-row">
+
+                <label for="reminderMessage">
+                    Reminder Message
+                </label>
+
+                <input
+                    type="text"
+                    id="reminderMessage"
+                    value="Don't forget to record today's offline expenses!"
+                >
+
+            </div>
+
+
+            <button
+                class="primary-btn"
+                id="saveReminderSettings"
+            >
+                Save Reminder Settings
+            </button>
+
+
+            <p
+                id="reminderStatus"
+                class="setting-status"
+            ></p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+        <!-- ================= ADD TRANSACTION ================= -->
+
+        <section class="content-section">
+
+
+            <div class="section-title">
+
+                <div>
+
+                    <h2>
+                        Add Transaction
+                    </h2>
+
+                    <p>
+                        Record your income or expenses.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <form
+                id="transactionForm"
+                class="transaction-form"
+            >
+
+
+                <!-- Transaction Type -->
+
+                <div class="form-group">
+
+                    <label for="transactionType">
+                        Transaction Type
+                    </label>
+
+                    <select
+                        id="transactionType"
+                        required
+                    >
+
+                        <option value="expense">
+                            Expense
+                        </option>
+
+                        <option value="income">
+                            Income
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+
+                <!-- Payment Mode -->
+
+                <div class="form-group">
+
+                    <label for="paymentMode">
+                        Payment Mode
+                    </label>
+
+                    <select
+                        id="paymentMode"
+                        required
+                    >
+
+                        <option value="online">
+                            Online
+                        </option>
+
+                        <option value="offline">
+                            Offline / Cash
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+
+                <!-- Amount -->
+
+                <div class="form-group">
+
+                    <label for="amount">
+                        Amount
+                    </label>
+
+                    <input
+                        type="number"
+                        id="amount"
+                        placeholder="Enter amount"
+                        min="1"
+                        required
+                    >
+
+                </div>
+
+
+
+                <!-- Category -->
+
+                <div class="form-group">
+
+                    <label for="category">
+                        Category
+                    </label>
+
+                    <select
+                        id="category"
+                        required
+                    >
+
+                        <option value="">
+                            Select category
+                        </option>
+
+                        <option value="Food">
+                            Food
+                        </option>
+
+                        <option value="Travel">
+                            Travel
+                        </option>
+
+                        <option value="Shopping">
+                            Shopping
+                        </option>
+
+                        <option value="Education">
+                            Education
+                        </option>
+
+                        <option value="Entertainment">
+                            Entertainment
+                        </option>
+
+                        <option value="Bills">
+                            Bills
+                        </option>
+
+                        <option value="Health">
+                            Health
+                        </option>
+
+                        <option value="Salary">
+                            Salary
+                        </option>
+
+                        <option value="Other">
+                            Other
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+
+                <!-- Description -->
+
+                <div class="form-group">
+
+                    <label for="description">
+                        Description
+                    </label>
+
+                    <input
+                        type="text"
+                        id="description"
+                        placeholder="Example: Lunch"
+                        required
+                    >
+
+                </div>
+
+
+
+                <!-- Date -->
+
+                <div class="form-group">
+
+                    <label for="date">
+                        Date
+                    </label>
+
+                    <input
+                        type="date"
+                        id="date"
+                        required
+                    >
+
+                </div>
+
+
+
+                <!-- Submit -->
+
+                <button
+                    type="submit"
+                    class="primary-btn add-btn"
+                >
+                    + Add Transaction
+                </button>
+
+
+            </form>
+
+        </section>
+
+
+
+        <!-- ================= OFFLINE CHECK-IN ================= -->
+
+        <section
+            id="reminder"
+            class="content-section"
+        >
+
+
+            <div class="section-title">
+
+                <div>
+
+                    <h2>
+                        🌙 Daily Offline Spending Check-in
+                    </h2>
+
+                    <p>
+                        Did you spend any cash today?
+                        Record it before you finish your day.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="checkin-box">
+
+
+                <div class="checkin-message">
+
+                    <h3>
+                        Don't forget your offline expenses!
+                    </h3>
+
+                    <p>
+                        Cash transactions are not automatically
+                        visible to this application.
+                        Enter them manually here.
+                    </p>
+
+                </div>
+
+
+                <button
+                    id="offlineCheckinBtn"
+                    class="primary-btn"
+                >
+                    + Add Offline Expense
+                </button>
+
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ================= TRANSACTIONS ================= -->
+
+        <section
+            id="transactions"
+            class="content-section"
+        >
+
+
+            <div class="section-title">
+
+                <div>
+
+                    <h2>
+                        Transaction History
+                    </h2>
+
+                    <p>
+                        View and manage your transactions.
+                    </p>
+
+                </div>
+
+
+                <input
+                    type="text"
+                    id="searchInput"
+                    class="search-input"
+                    placeholder="🔍 Search transactions..."
+                >
+
+            </div>
+
+
+
+            <!-- FILTERS -->
+
+            <div class="filter-container">
+
+
+                <select id="filterType">
+
+                    <option value="all">
+                        All Types
+                    </option>
+
+                    <option value="income">
+                        Income
+                    </option>
+
+                    <option value="expense">
+                        Expense
+                    </option>
+
+                </select>
+
+
+
+                <select id="filterMode">
+
+                    <option value="all">
+                        All Modes
+                    </option>
+
+                    <option value="online">
+                        Online
+                    </option>
+
+                    <option value="offline">
+                        Offline
+                    </option>
+
+                </select>
+
+
+
+                <select id="filterCategory">
+
+                    <option value="all">
+                        All Categories
+                    </option>
+
+                    <option value="Food">
+                        Food
+                    </option>
+
+                    <option value="Travel">
+                        Travel
+                    </option>
+
+                    <option value="Shopping">
+                        Shopping
+                    </option>
+
+                    <option value="Education">
+                        Education
+                    </option>
+
+                    <option value="Entertainment">
+                        Entertainment
+                    </option>
+
+                    <option value="Bills">
+                        Bills
+                    </option>
+
+                    <option value="Health">
+                        Health
+                    </option>
+
+                </select>
+
+
+            </div>
+
+
+
+            <!-- TABLE -->
+
+            <div class="table-container">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>
+                                Date
+                            </th>
+
+                            <th>
+                                Description
+                            </th>
+
+                            <th>
+                                Category
+                            </th>
+
+                            <th>
+                                Mode
+                            </th>
+
+                            <th>
+                                Type
+                            </th>
+
+                            <th>
+                                Amount
+                            </th>
+
+                            <th>
+                                Action
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody id="transactionTable">
+
+                    </tbody>
+
+
+                </table>
+
+            </div>
+
+
+
+            <div
+                id="emptyMessage"
+                class="empty-message"
+            >
+                No transactions found.
+            </div>
+
+
+        </section>
+
+
+
+        <!-- ================= ANALYTICS ================= -->
+
+        <section
+            id="analytics"
+            class="content-section"
+        >
+
+
+            <div class="section-title">
+
+                <div>
+
+                    <h2>
+                        📊 Spending Analysis
+                    </h2>
+
+                    <p>
+                        Understand where your money is going.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="analytics-grid">
+
+
+                <!-- Online vs Offline -->
+
+                <div class="analytics-card">
+
+                    <h3>
+                        Online vs Offline
+                    </h3>
+
+
+                    <div class="progress-item">
+
+                        <div class="progress-label">
+
+                            <span>
+                                Online
+                            </span>
+
+                            <span id="onlinePercentage">
+                                0%
+                            </span>
+
+                        </div>
+
+
+                        <div class="progress-bar">
+
+                            <div
+                                id="onlineProgress"
+                                class="progress-fill online-progress"
+                            ></div>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="progress-item">
+
+                        <div class="progress-label">
+
+                            <span>
+                                Offline
+                            </span>
+
+                            <span id="offlinePercentage">
+                                0%
+                            </span>
+
+                        </div>
+
+
+                        <div class="progress-bar">
+
+                            <div
+                                id="offlineProgress"
+                                class="progress-fill offline-progress"
+                            ></div>
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+
+
+                <!-- Budget -->
+
+                <div class="analytics-card">
+
+                    <h3>
+                        Monthly Budget
+                    </h3>
+
+
+                    <div class="budget-input">
+
+                        <input
+                            type="number"
+                            id="budgetInput"
+                            placeholder="Enter monthly budget"
+                            min="0"
+                        >
+
+
+                        <button
+                            id="saveBudgetBtn"
+                            class="primary-btn"
+                        >
+                            Save
+                        </button>
+
+                    </div>
+
+
+                    <div class="budget-info">
+
+                        <p>
+                            Budget:
+                            <strong id="budgetAmount">
+                                ₹0
+                            </strong>
+                        </p>
+
+
+                        <p>
+                            Remaining:
+                            <strong id="budgetRemaining">
+                                ₹0
+                            </strong>
+                        </p>
+
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer>
+
+        <p>
+            © 2026 SpendWise | Smart Online & Offline Expense Tracker
+        </p>
+
+    </footer>
+
+
+
+    <!-- JAVASCRIPT -->
+
+    <script src="js/script.js"></script>
+
+
+</body>
+
+</html>

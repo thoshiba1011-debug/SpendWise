@@ -1,0 +1,12 @@
+# VS Code settings
+.vscode/
+
+# Node.js dependencies
+SpendWise/server/node_modules/
+SpendWise/node_modules/
+node_modules/
+
+# Environment files
+.env
+.env.*
+SpendWise/server/.env

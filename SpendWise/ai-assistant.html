@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>SpendWise - AI Assistant</title>
+
+    <link
+        rel="stylesheet"
+        href="css/style.css"
+    >
+
+</head>
+
+
+<body>
+
+    <!-- NAVBAR -->
+
+    <header class="navbar">
+
+        <div class="logo">
+            💰 SpendWise
+        </div>
+
+
+        <nav>
+
+            <a href="index.html">
+                Dashboard
+            </a>
+
+            <a href="transactions.html">
+                Transactions
+            </a>
+
+            <a href="analytics.html">
+                Analytics
+            </a>
+
+            <a href="settings.html">
+                Settings
+            </a>
+
+            <a href="ai-assistant.html">
+                🤖 AI Assistant
+            </a>
+
+        </nav>
+
+
+        <button
+            id="themeToggle"
+            class="theme-btn"
+        >
+            🌙
+        </button>
+
+    </header>
+
+
+    <!-- AI ASSISTANT -->
+
+    <main>
+
+        <section class="content-section">
+
+            <div class="section-title">
+
+                <div>
+
+                    <h2>
+                        🤖 SpendWise AI Assistant
+                    </h2>
+
+                    <p>
+                        Ask questions about your
+                        spending, balance and budget.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- CHATBOX -->
+
+            <div class="chat-container">
+
+                <div
+                    class="chat-messages"
+                    id="chatMessages"
+                >
+
+                    <div class="bot-message">
+
+                        👋 Hi! I'm your SpendWise
+                        Assistant.
+
+                        <br><br>
+
+                        You can ask me things like:
+
+                        <br><br>
+
+                        • What is my current balance?
+                        <br>
+                        • How much did I spend offline?
+                        <br>
+                        • How much did I spend online?
+                        <br>
+                        • Am I over my budget?
+                        <br>
+                        • Give me a spending suggestion.
+
+                    </div>
+
+                </div>
+
+
+                <div class="chat-input-area">
+
+                    <input
+                        type="text"
+                        id="chatInput"
+                        placeholder="Ask SpendWise AI..."
+                    >
+
+                    <button
+                        id="sendMessage"
+                        class="primary-btn"
+                    >
+                        Send
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <p>
+            © 2026 SpendWise |
+            Smart Online & Offline Expense Tracker
+        </p>
+
+    </footer>
+
+<script src="js/ai-assistant.js"></script>
+</body>
+
+</html>
